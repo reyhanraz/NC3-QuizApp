@@ -15,6 +15,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         print("Hello World")
     }
+    
+    @IBAction func toStageModal(_ sender: UIButton){
+        performSegue(withIdentifier: "toStageModal", sender: self)
+    }
 
 
 }
