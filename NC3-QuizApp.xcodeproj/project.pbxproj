@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B0914D1248E888C00378B59 /* LeaderBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0914D0248E888C00378B59 /* LeaderBoardVC.swift */; };
+		4BB39C402490AB88003FB149 /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BB39C3F2490AB88003FB149 /* bensound-ukulele.mp3 */; };
 		4BC570B2248D456000B8E873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC570B1248D456000B8E873 /* AppDelegate.swift */; };
 		4BC570B4248D456000B8E873 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC570B3248D456000B8E873 /* SceneDelegate.swift */; };
 		4BC570B6248D456000B8E873 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC570B5248D456000B8E873 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		4B0914D0248E888C00378B59 /* LeaderBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardVC.swift; sourceTree = "<group>"; };
+		4BB39C3F2490AB88003FB149 /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-ukulele.mp3"; sourceTree = "<group>"; };
 		4BC570AE248D456000B8E873 /* NC3-QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NC3-QuizApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC570B1248D456000B8E873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BC570B3248D456000B8E873 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				4BC570BA248D456100B8E873 /* Assets.xcassets */,
 				4BC570BC248D456100B8E873 /* LaunchScreen.storyboard */,
 				4BC570BF248D456100B8E873 /* Info.plist */,
+				4BB39C3F2490AB88003FB149 /* bensound-ukulele.mp3 */,
 			);
 			path = "NC3-QuizApp";
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB39C402490AB88003FB149 /* bensound-ukulele.mp3 in Resources */,
 				4BC570BE248D456100B8E873 /* LaunchScreen.storyboard in Resources */,
 				4BC570BB248D456100B8E873 /* Assets.xcassets in Resources */,
 				4BC570B9248D456000B8E873 /* Main.storyboard in Resources */,

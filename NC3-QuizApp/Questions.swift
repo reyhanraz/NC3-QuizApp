@@ -17,4 +17,4 @@ struct question {
     var optionD: String
 }
 
-let ListOfQuestion: [question] = []
+

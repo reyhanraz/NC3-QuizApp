@@ -14,12 +14,19 @@ class LandingVCViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
 
+
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func toGamePlay(_ sender: UIButton) {
-        performSegue(withIdentifier: "toGamePlay", sender: self)
+        performSegue(withIdentifier: "toGamePlay", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ViewController{
+            destination.index = 0
+        }
     }
     
 
