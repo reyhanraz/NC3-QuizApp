@@ -11,6 +11,10 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var boxImage: UIImageView!
+    @IBOutlet weak var playMusicButton: UIButton!
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var optionAbtn: UIButton!
     @IBOutlet weak var optionBbtn: UIButton!
@@ -37,11 +41,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setupPage(y: 1000)
         initUI()
         optionAbtn.layer.cornerRadius = 20
         optionBbtn.layer.cornerRadius = 20
         optionCbtn.layer.cornerRadius = 20
         optionDbtn.layer.cornerRadius = 20
+        animateShow()
 
         
         hintLeft = 3
@@ -52,12 +58,57 @@ class ViewController: UIViewController {
     
     func initUI(){
         self.questions = ListOfQuestion[index!]
+        titleLbl.text = "Stage \(index!+1)"
         questionLabel.text = questions?.question
         optionAbtn.setTitle(questions?.optionA, for: .normal)
         optionBbtn.setTitle(questions?.optionB, for: .normal)
         optionCbtn.setTitle(questions?.optionC, for: .normal)
         optionDbtn.setTitle(questions?.optionD, for: .normal)
         pointsLbl.text = "\(data.integer(forKey: "Points"))"
+    }
+    
+    func setupPage(y: CGFloat){
+        titleLbl.center.y -= y
+        boxImage.center.y -= y
+        playMusicButton.center.y -= y
+        
+        questionLabel.center.y -= y
+        optionAbtn.center.y -= y
+        optionBbtn.center.y -= y
+        optionCbtn.center.y -= y
+        optionDbtn.center.y -= y
+        
+    }
+    
+    func animateShow(){
+        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 2, options: .curveLinear, animations: {
+            
+            self.titleLbl.center.y += 1000
+            self.boxImage.center.y += 1000
+            self.playMusicButton.center.y += 1000
+            
+            self.questionLabel.center.y += 1000
+            self.optionAbtn.center.y += 1000
+            self.optionBbtn.center.y += 1000
+            self.optionCbtn.center.y += 1000
+            self.optionDbtn.center.y += 1000
+        }, completion: nil)
+        
+    }
+    
+    func animateHide(){
+        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+            
+            self.titleLbl.center.y += 1000
+            self.boxImage.center.y += 1000
+            self.playMusicButton.center.y += 1000
+            
+            self.questionLabel.center.y += 1000
+            self.optionAbtn.center.y += 1000
+            self.optionBbtn.center.y += 1000
+            self.optionCbtn.center.y += 1000
+            self.optionDbtn.center.y += 1000
+        }, completion: nil)
     }
     
     func playMusic(){
@@ -67,8 +118,8 @@ class ViewController: UIViewController {
         }catch{
             print(error)
         }
-        player?.play()
-        print(player?.duration)
+//        player?.play()
+//        print(player?.duration)
 
     }
     
@@ -84,9 +135,7 @@ class ViewController: UIViewController {
             hint3Img.image = UIImage(named: "hint_off")
         }
     }
-    @IBAction func toStageModal(_ sender: UIButton){
-        performSegue(withIdentifier: "toStageModal", sender: nil)
-    }
+
 
     @IBAction func answerFunction(_ sender: UIButton) {
         switch sender.titleLabel?.text {
@@ -94,6 +143,9 @@ class ViewController: UIViewController {
             let point = data.integer(forKey: "Points")
             data.set(point + questions!.reward, forKey: "Points")
             self.index! += 1
+            animateHide()
+            setupPage(y: 2000)
+            animateShow()
             initUI()
         default:
             hintLeft! -= 1

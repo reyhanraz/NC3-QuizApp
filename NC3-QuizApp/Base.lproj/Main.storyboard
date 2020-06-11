@@ -148,21 +148,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="music_player_box" translatesAutoresizingMaskIntoConstraints="NO" id="rEs-kP-8GI">
-                                <rect key="frame" x="77" y="159" width="260" height="230"/>
+                                <rect key="frame" x="77" y="160" width="260" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="music_player_label" translatesAutoresizingMaskIntoConstraints="NO" id="9zB-ak-61J">
                                 <rect key="frame" x="108" y="187" width="198" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zow-42-jL2">
-                                <rect key="frame" x="58" y="94" width="39" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="stage"/>
-                                <connections>
-                                    <action selector="toStageModal:" destination="6Fb-mU-Vf9" eventType="touchUpInside" id="voG-SN-JKe"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRv-hE-Dw8">
                                 <rect key="frame" x="20" y="534" width="374" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,10 +222,10 @@
                                 <rect key="frame" x="304" y="44" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCF-h5-4ci">
-                                <rect key="frame" x="186" y="130" width="45" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCF-h5-4ci">
+                                <rect key="frame" x="77" y="120" width="257" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -254,6 +246,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="KXo-Sa-C89"/>
                     <connections>
+                        <outlet property="boxImage" destination="rEs-kP-8GI" id="QeG-wY-Fnz"/>
                         <outlet property="hint1Img" destination="gxG-7p-k2L" id="obK-CX-HPF"/>
                         <outlet property="hint2Img" destination="Dnm-Nc-H2a" id="Iyg-ss-eWm"/>
                         <outlet property="hint3Img" destination="xCF-ci-qoa" id="jeY-Un-wjS"/>
@@ -261,30 +254,15 @@
                         <outlet property="optionBbtn" destination="cPi-WI-In8" id="f5b-6b-hy9"/>
                         <outlet property="optionCbtn" destination="gsa-7u-zdf" id="pnw-eM-j8K"/>
                         <outlet property="optionDbtn" destination="Afq-J4-Wvm" id="Cd3-pq-WUJ"/>
+                        <outlet property="playMusicButton" destination="9Dt-AQ-kKI" id="Eyg-sY-FnV"/>
                         <outlet property="pointsLbl" destination="Mjk-Y1-vgD" id="GtX-8R-0FF"/>
                         <outlet property="questionLabel" destination="hrN-X0-jvQ" id="AQY-UY-7VF"/>
-                        <segue destination="9gM-Je-k5y" kind="show" identifier="toStageModal" id="xJJ-ix-bUH"/>
+                        <outlet property="titleLbl" destination="GCF-h5-4ci" id="TxL-DH-jat"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUA-7o-3Fq" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1726.0869565217392" y="123.88392857142857"/>
-        </scene>
-        <!--Stage Modal-->
-        <scene sceneID="2SR-Zy-V8D">
-            <objects>
-                <viewController id="9gM-Je-k5y" customClass="StageModal" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TuH-dB-liz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="NfC-gA-aEa"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="rhV-Ox-BaB"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GAA-Ye-YQF" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2535" y="124"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2jR-bZ-YfK">
