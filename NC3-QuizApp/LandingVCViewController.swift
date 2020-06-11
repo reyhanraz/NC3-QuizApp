@@ -8,14 +8,22 @@
 
 import UIKit
 
-class LandingVCViewController: UIViewController {
 
+let data = UserDefaults.standard
+
+class LandingVCViewController: UIViewController {
+    
+
+    @IBOutlet weak var pointsLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        
+        pointsLbl.text = "\(data.integer(forKey: "Points"))"
 
-
-        // Do any additional setup after loading the view.
+        
     }
     
     

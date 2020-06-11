@@ -15,6 +15,7 @@ struct question {
     var optionB: String
     var optionC: String
     var optionD: String
+    var reward: Int
 }
 
 
