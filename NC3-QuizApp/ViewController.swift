@@ -10,6 +10,18 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
+    
+    //MARK: Properties
+    
+    var success = true
+    
+    lazy var popUpWindow: PopUpWindow = {
+        let view = PopUpWindow()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 5
+        view.delegate = self
+        return view
+    }()
 
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var boxImage: UIImageView!
@@ -25,6 +37,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var hint1Img: UIImageView!
     @IBOutlet weak var hint2Img: UIImageView!
     @IBOutlet weak var hint3Img: UIImageView!
+        
+    let visualEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .light)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     var hintLeft: Int?
 
@@ -36,21 +55,29 @@ class ViewController: UIViewController {
     
     var player: AVAudioPlayer!
 
-    
+    //MARK: Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupPage(y: 1000)
         initUI()
-        optionAbtn.layer.cornerRadius = 20
-        optionBbtn.layer.cornerRadius = 20
-        optionCbtn.layer.cornerRadius = 20
-        optionDbtn.layer.cornerRadius = 20
+        optionAbtn.layer.cornerRadius = 7
+        optionBbtn.layer.cornerRadius = 7
+        optionCbtn.layer.cornerRadius = 7
+        optionDbtn.layer.cornerRadius = 7
         animateShow()
 
         
         hintLeft = 3
+        
+        view.addSubview(visualEffectView)
+        visualEffectView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        visualEffectView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        visualEffectView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        
+        visualEffectView.alpha = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +108,7 @@ class ViewController: UIViewController {
     }
     
     func animateShow(){
-        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 2, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 2, options: .curveLinear, animations: {
             
             self.titleLbl.center.y += 1000
             self.boxImage.center.y += 1000
@@ -118,7 +145,7 @@ class ViewController: UIViewController {
         }catch{
             print(error)
         }
-//        player?.play()
+        player?.play()
 //        print(player?.duration)
 
     }
@@ -136,17 +163,14 @@ class ViewController: UIViewController {
         }
     }
 
+    //MARK: ACTION
 
     @IBAction func answerFunction(_ sender: UIButton) {
         switch sender.titleLabel?.text {
         case questions?.correctAnswer:
-            let point = data.integer(forKey: "Points")
-            data.set(point + questions!.reward, forKey: "Points")
-            self.index! += 1
-            animateHide()
-            setupPage(y: 2000)
-            animateShow()
-            initUI()
+            player?.stop()
+            handleShowPopUp()
+            
         default:
             hintLeft! -= 1
             kuranginHint()
@@ -157,5 +181,58 @@ class ViewController: UIViewController {
     @IBAction func playBtnPressed(_ sender: Any) {
         playMusic()
     }
+    @objc func handleShowPopUp() {
+        view.addSubview(popUpWindow)
+        popUpWindow.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40).isActive = true
+        popUpWindow.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        popUpWindow.heightAnchor.constraint(equalToConstant: 366).isActive = true
+        popUpWindow.widthAnchor.constraint(equalToConstant: 282).isActive = true
+        
+        popUpWindow.showSuccessMessage = success
+        success = !success
+        
+        popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        popUpWindow.alpha = 0
+        
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.alpha = 0.8
+            self.popUpWindow.alpha = 1
+            self.popUpWindow.transform = CGAffineTransform.identity
+        }
+    }
 }
 
+extension ViewController: PopUpDelegate{
+    func handleDismissalYes() {
+        print("Yes")
+        let point = data.integer(forKey: "Points")
+        data.set(point + questions!.reward, forKey: "Points")
+        self.index! += 1
+        animateHide()
+        setupPage(y: 2000)
+        animateShow()
+        initUI()
+        self.popUpWindow.removeFromSuperview()
+        self.visualEffectView.alpha = 0
+
+    }
+    
+    func handleDismissalNo() {
+        print("No")
+        self.popUpWindow.removeFromSuperview()
+        self.visualEffectView.alpha = 0
+        performSegue(withIdentifier: "toEndGame", sender: nil)
+
+        
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.visualEffectView.alpha = 0
+//            self.popUpWindow.alpha = 0
+//            self.popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+//        }) { (_) in
+//            self.popUpWindow.removeFromSuperview()
+//            print("Did remove pop up window..")
+//        }
+
+    }
+    
+}

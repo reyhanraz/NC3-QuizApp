@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StageModal: UIViewController {
+class popUpModal: UIViewController {
 
     override func viewDidLoad() {
         //super.viewDidLoad()
