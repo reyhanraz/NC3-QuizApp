@@ -13,10 +13,19 @@ class ViewController: UIViewController {
     
     //MARK: Properties
     
-    var success = true
+    var state = true
+    var buttonArray: [UIButton] = []
     
     lazy var popUpWindow: PopUpWindow = {
         let view = PopUpWindow()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 5
+        view.delegate = self
+        return view
+    }()
+    
+    lazy var popUpWindowForWrong: PopUpWindowForWrong = {
+        let view = PopUpWindowForWrong()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 5
         view.delegate = self
@@ -34,9 +43,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var optionDbtn: UIButton!
     @IBOutlet weak var pointsLbl: UILabel!
     
-    @IBOutlet weak var hint1Img: UIImageView!
-    @IBOutlet weak var hint2Img: UIImageView!
-    @IBOutlet weak var hint3Img: UIImageView!
+    @IBOutlet weak var hint1Img: UIButton!
+    @IBOutlet weak var hint2Img: UIButton!
+    @IBOutlet weak var hint3Img: UIButton!
         
     let visualEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .light)
@@ -51,6 +60,7 @@ class ViewController: UIViewController {
     let ListOfQuestion: [question] = [
         question(question: "Who is the singer of the song?", correctAnswer: "Jason Mraz", optionA: "Jason Momoa", optionB: "Michael Jakson", optionC: "Jason Mraz", optionD: "Justin Timberlake", reward: 5),
         question(question: "What is the title of the song?", correctAnswer: "Celine Dion", optionA: "Celine Dion", optionB: "Demi Lovato", optionC: "Jessie J", optionD: "Taylor Swift", reward: 10)]
+    
     var questions: question?
     
     var player: AVAudioPlayer!
@@ -84,14 +94,34 @@ class ViewController: UIViewController {
     }
     
     func initUI(){
-        self.questions = ListOfQuestion[index!]
-        titleLbl.text = "Stage \(index!+1)"
-        questionLabel.text = questions?.question
-        optionAbtn.setTitle(questions?.optionA, for: .normal)
-        optionBbtn.setTitle(questions?.optionB, for: .normal)
-        optionCbtn.setTitle(questions?.optionC, for: .normal)
-        optionDbtn.setTitle(questions?.optionD, for: .normal)
-        pointsLbl.text = "\(data.integer(forKey: "Points"))"
+        if index! < ListOfQuestion.count{
+            self.questions = ListOfQuestion[index!]
+            titleLbl.text = "Stage \(index!+1)"
+            questionLabel.text = questions?.question
+            optionAbtn.setTitle(questions?.optionA, for: .normal)
+            optionBbtn.setTitle(questions?.optionB, for: .normal)
+            optionCbtn.setTitle(questions?.optionC, for: .normal)
+            optionDbtn.setTitle(questions?.optionD, for: .normal)
+            pointsLbl.text = "\(data.integer(forKey: "Points"))"
+            
+            buttonArray = [optionAbtn, optionBbtn, optionCbtn, optionDbtn]
+        }
+        
+        
+        optionAbtn.backgroundColor = .white
+        optionBbtn.backgroundColor = .white
+        optionCbtn.backgroundColor = .white
+        optionDbtn.backgroundColor = .white
+        
+        optionAbtn.isHidden = false
+        optionBbtn.isHidden = false
+        optionCbtn.isHidden = false
+        optionDbtn.isHidden = false
+
+        
+        hint1Img.isEnabled = true
+        hint2Img.isEnabled = true
+        hint3Img.isEnabled = true
     }
     
     func setupPage(y: CGFloat){
@@ -152,57 +182,107 @@ class ViewController: UIViewController {
     
     func kuranginHint(){
         if hintLeft == 2{
-            hint1Img.image = UIImage(named: "hint_off")
+            hint1Img.setImage(UIImage(named: "hint_off"), for: .normal)
         }else if hintLeft == 1{
-            hint1Img.image = UIImage(named: "hint_off")
-            hint2Img.image = UIImage(named: "hint_off")
+            hint1Img.setImage(UIImage(named: "hint_off"), for: .normal)
+            hint2Img.setImage(UIImage(named: "hint_off"), for: .normal)
         }else if hintLeft == 0{
-            hint1Img.image = UIImage(named: "hint_off")
-            hint2Img.image = UIImage(named: "hint_off")
-            hint3Img.image = UIImage(named: "hint_off")
+            hint1Img.setImage(UIImage(named: "hint_off"), for: .normal)
+            hint2Img.setImage(UIImage(named: "hint_off"), for: .normal)
+            hint3Img.setImage(UIImage(named: "hint_off"), for: .normal)
         }
+        
+        
+        buttonArray.removeAll(where: {$0.titleLabel?.text == questions?.correctAnswer})
+        print(buttonArray)
+        buttonArray.randomElement()?.isHidden = true
+        buttonArray.randomElement()?.isHidden = true
+        
+        hint1Img.isEnabled = false
+        hint2Img.isEnabled = false
+        hint3Img.isEnabled = false
+
+
+        
+        
     }
 
     //MARK: ACTION
 
     @IBAction func answerFunction(_ sender: UIButton) {
+        let color = UIColor(displayP3Red: 255/255, green: 154/255, blue: 74/255, alpha: 1)
+        
+        switch sender{
+        case optionAbtn:
+            optionAbtn.backgroundColor = color
+            optionBbtn.backgroundColor = .white
+            optionCbtn.backgroundColor = .white
+            optionDbtn.backgroundColor = .white
+
+        case optionBbtn:
+            optionAbtn.backgroundColor = .white
+            optionBbtn.backgroundColor = color
+            optionCbtn.backgroundColor = .white
+            optionDbtn.backgroundColor = .white
+        case optionCbtn:
+            optionAbtn.backgroundColor = .white
+            optionBbtn.backgroundColor = .white
+            optionCbtn.backgroundColor = color
+            optionDbtn.backgroundColor = .white
+        default:
+            optionAbtn.backgroundColor = .white
+            optionBbtn.backgroundColor = .white
+            optionCbtn.backgroundColor = .white
+            optionDbtn.backgroundColor = color
+        }
+        
         switch sender.titleLabel?.text {
         case questions?.correctAnswer:
             player?.stop()
-            handleShowPopUp()
-            
+            handleShowPopUp(popUpview: popUpWindow)
+            popUpWindow.initFrame(image: "gambarQ1.png", fact: "aaaaa")
+            self.state = true
         default:
-            hintLeft! -= 1
-            kuranginHint()
-            print("Salah")
+            handleShowPopUp(popUpview: popUpWindowForWrong)
+            self.state = false
+
         }
     }
+    
+    @IBAction func btnHintPressed(_ sender: UIButton) {
+        hintLeft! -= 1
+        kuranginHint()
+        
+    }
+    
     
     @IBAction func playBtnPressed(_ sender: Any) {
         playMusic()
     }
-    @objc func handleShowPopUp() {
-        view.addSubview(popUpWindow)
-        popUpWindow.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40).isActive = true
-        popUpWindow.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        popUpWindow.heightAnchor.constraint(equalToConstant: 366).isActive = true
-        popUpWindow.widthAnchor.constraint(equalToConstant: 282).isActive = true
+    @objc func handleShowPopUp(popUpview: UIView) {
         
-        popUpWindow.showSuccessMessage = success
-        success = !success
+        view.addSubview(popUpview)
+        popUpview.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40).isActive = true
+        popUpview.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        popUpview.widthAnchor.constraint(equalToConstant: 282).isActive = true
         
-        popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        popUpWindow.alpha = 0
+        popUpview.backgroundColor = UIColor(displayP3Red: 186/255, green: 215/255, blue: 232/255, alpha: 1)
+        popUpview.layer.borderWidth = 1
+        popUpview.layer.borderColor = UIColor.white.cgColor
+        popUpview.layer.cornerRadius = 7
+        popUpview.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        popUpview.alpha = 0
         
         UIView.animate(withDuration: 0.5) {
             self.visualEffectView.alpha = 0.8
-            self.popUpWindow.alpha = 1
-            self.popUpWindow.transform = CGAffineTransform.identity
+            popUpview.alpha = 1
+            popUpview.transform = CGAffineTransform.identity
         }
     }
 }
 
 extension ViewController: PopUpDelegate{
+    
     func handleDismissalYes() {
         print("Yes")
         let point = data.integer(forKey: "Points")
@@ -219,9 +299,21 @@ extension ViewController: PopUpDelegate{
     
     func handleDismissalNo() {
         print("No")
-        self.popUpWindow.removeFromSuperview()
-        self.visualEffectView.alpha = 0
-        performSegue(withIdentifier: "toEndGame", sender: nil)
+        
+        switch self.state {
+        case true:
+            self.popUpWindow.removeFromSuperview()
+            self.visualEffectView.alpha = 0
+        default:
+            self.navigationController?.popViewController(animated: true)
+            self.popUpWindowForWrong.removeFromSuperview()
+            self.visualEffectView.alpha = 0
+        }
+        
+        
+        
+        
+        //performSegue(withIdentifier: "toEndGame", sender: nil)
 
         
 //        UIView.animate(withDuration: 0.5, animations: {
@@ -236,3 +328,4 @@ extension ViewController: PopUpDelegate{
     }
     
 }
+

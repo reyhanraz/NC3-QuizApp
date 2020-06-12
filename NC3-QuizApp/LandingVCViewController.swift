@@ -15,6 +15,7 @@ class LandingVCViewController: UIViewController {
     
 
     @IBOutlet weak var pointsLbl: UILabel!
+    @IBOutlet weak var musicNoteImg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,10 @@ class LandingVCViewController: UIViewController {
         
         
         pointsLbl.text = "\(data.integer(forKey: "Points"))"
+    
+        UIView.animate(withDuration: 1, delay: 1, options: [.beginFromCurrentState, .repeat], animations: {
+            self.musicNoteImg.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2/5)
+        }, completion: nil)
 
         
     }
