@@ -10,6 +10,7 @@ import Foundation
 
 struct question {
     var question: String
+    var questionFact: String
     var correctAnswer: String
     var optionA: String
     var optionB: String

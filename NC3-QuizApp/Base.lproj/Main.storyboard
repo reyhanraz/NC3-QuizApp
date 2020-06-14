@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--On BoardingVC-->
         <scene sceneID="yby-yA-GYP">
             <objects>
-                <viewController storyboardIdentifier="onBoarding" id="K1t-cV-pxF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onBoarding" id="K1t-cV-pxF" customClass="onBoardingVC" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p9g-mc-eYM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
         <!--LandingVC View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LandingVCViewController" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeVC" id="BYZ-38-t0r" customClass="LandingVCViewController" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -337,10 +337,10 @@
             </objects>
             <point key="canvasLocation" x="1726.0869565217392" y="123.88392857142857"/>
         </scene>
-        <!--View Controller-->
+        <!--End GameVC-->
         <scene sceneID="wef-8e-la4">
             <objects>
-                <viewController id="d9O-Sb-1HD" sceneMemberID="viewController">
+                <viewController id="d9O-Sb-1HD" customClass="EndGameVC" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HfO-cc-Eme">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -353,6 +353,9 @@
                                 <rect key="frame" x="40" y="723" width="335" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="continue_button"/>
+                                <connections>
+                                    <action selector="continueBtnPressed:" destination="d9O-Sb-1HD" eventType="touchUpInside" id="IYN-w7-Ssy"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plz-Zd-C1z">
                                 <rect key="frame" x="97" y="500" width="220" height="34"/>
@@ -370,142 +373,24 @@ and earned 200 points!</string>
                                 <color key="textColor" red="0.40000000000000002" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="FAw-pU-qZt">
-                                <rect key="frame" x="222" y="273" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="One-Sy-ifi"/>
-                                    <constraint firstAttribute="width" constant="25" id="Psc-2h-baH"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="HIN-51-9cM">
-                                <rect key="frame" x="179" y="229" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="NvM-Bo-9p4"/>
-                                    <constraint firstAttribute="width" constant="25" id="usZ-u7-nXP"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="yec-kn-L5Q">
-                                <rect key="frame" x="212" y="240" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="3cg-YN-yN0"/>
-                                    <constraint firstAttribute="height" constant="25" id="lIk-aC-Nvg"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="Ub2-Th-P9Y">
-                                <rect key="frame" x="172" y="262" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="11P-eh-0Ar"/>
-                                    <constraint firstAttribute="width" constant="25" id="wFB-X6-tBI"/>
-                                </constraints>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trophy_label" translatesAutoresizingMaskIntoConstraints="NO" id="bmR-d5-jsY">
                                 <rect key="frame" x="135" y="284" width="145" height="166"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="Jhz-ck-VT9">
-                                <rect key="frame" x="141" y="240" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="O9J-p9-6dC"/>
-                                    <constraint firstAttribute="width" constant="25" id="Tzn-A4-oUh"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="e87-v3-lGa">
-                                <rect key="frame" x="250" y="245" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="jNe-dP-7m0"/>
-                                    <constraint firstAttribute="width" constant="25" id="zmi-3g-GVf"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="o53-3k-o2y">
-                                <rect key="frame" x="230" y="220" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="AL7-MB-pqN"/>
-                                    <constraint firstAttribute="height" constant="25" id="qpC-UR-xDy"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="AXZ-PL-UVW">
-                                <rect key="frame" x="203" y="207" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="Se2-pw-cPT"/>
-                                    <constraint firstAttribute="height" constant="25" id="xlP-H6-apL"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="xrz-u2-vzN">
-                                <rect key="frame" x="165" y="207" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="bG2-Nf-92d"/>
-                                    <constraint firstAttribute="width" constant="25" id="exr-ff-02a"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="IV2-vx-GNy">
-                                <rect key="frame" x="135" y="207" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="6Fn-PH-h1c"/>
-                                    <constraint firstAttribute="height" constant="25" id="QWf-TB-b9p"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="Zg6-XH-UGo">
-                                <rect key="frame" x="102" y="220" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="YJk-EB-a39"/>
-                                    <constraint firstAttribute="height" constant="25" id="sd5-yV-dPs"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="KsC-9e-n2d">
-                                <rect key="frame" x="263" y="212" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="O3x-VN-Wnw"/>
-                                    <constraint firstAttribute="width" constant="25" id="T04-Ns-YIl"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="aP4-1N-B5Q">
-                                <rect key="frame" x="242" y="187" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="bBz-gM-XfQ"/>
-                                    <constraint firstAttribute="width" constant="25" id="tSK-Fw-B7l"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="bCt-is-CVW">
-                                <rect key="frame" x="283" y="234" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="05c-Lf-Yje"/>
-                                    <constraint firstAttribute="height" constant="25" id="mLN-Kh-geE"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="Ya8-2d-Eko">
-                                <rect key="frame" x="108" y="253" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="Smf-lQ-Y1F"/>
-                                    <constraint firstAttribute="height" constant="25" id="ils-rn-Uoi"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="uhW-JC-v09">
-                                <rect key="frame" x="85" y="284" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="Hk6-CV-kzO"/>
-                                    <constraint firstAttribute="height" constant="25" id="IXe-xv-4Qw"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="hG6-Hk-Ke0">
-                                <rect key="frame" x="283" y="267" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="61b-LU-m8w"/>
-                                    <constraint firstAttribute="width" constant="25" id="Fmr-PX-jje"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="points_in_trophy" translatesAutoresizingMaskIntoConstraints="NO" id="Fih-6L-3sb">
-                                <rect key="frame" x="149" y="174" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="1th-uV-Ohw"/>
-                                    <constraint firstAttribute="width" constant="25" id="M8M-Zo-CXn"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="MoB-lR-WKY"/>
                     </view>
                     <navigationItem key="navigationItem" id="gEd-gN-t0v"/>
+                    <connections>
+                        <outlet property="messageLbl" destination="hDu-5L-nFd" id="tKo-p5-KTY"/>
+                        <outlet property="trophy" destination="bmR-d5-jsY" id="z2w-pT-o33"/>
+                    </connections>
                 </viewController>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="points_in_trophy" id="oxu-Jt-umw">
+                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acn-Qt-ecb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2478" y="124"/>

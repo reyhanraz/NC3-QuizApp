@@ -31,6 +31,16 @@ class ViewController: UIViewController {
         view.delegate = self
         return view
     }()
+    
+    let visualEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .light)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let ListOfQuestion: [question] = [
+        question(question: "What is the title of the song?", questionFact: "My Heart Will Go On in Titanic\nmovie is a demo track and\nrecorded in just one take.  ", correctAnswer: "Celine Dion", optionA: "Celine Dion", optionB: "Demi Lovato", optionC: "Jessie J", optionD: "Taylor Swift", reward: 10)]
 
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var boxImage: UIImageView!
@@ -47,19 +57,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var hint2Img: UIButton!
     @IBOutlet weak var hint3Img: UIButton!
         
-    let visualEffectView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .light)
-        let view = UIVisualEffectView(effect: blurEffect)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
+    var pointsGained = 0
     var hintLeft: Int?
 
     var index: Int?
-    let ListOfQuestion: [question] = [
-        question(question: "Who is the singer of the song?", correctAnswer: "Jason Mraz", optionA: "Jason Momoa", optionB: "Michael Jakson", optionC: "Jason Mraz", optionD: "Justin Timberlake", reward: 5),
-        question(question: "What is the title of the song?", correctAnswer: "Celine Dion", optionA: "Celine Dion", optionB: "Demi Lovato", optionC: "Jessie J", optionD: "Taylor Swift", reward: 10)]
     
     var questions: question?
     
@@ -240,8 +241,9 @@ class ViewController: UIViewController {
         case questions?.correctAnswer:
             player?.stop()
             handleShowPopUp(popUpview: popUpWindow)
-            popUpWindow.initFrame(image: "gambarQ1.png", fact: "aaaaa")
+            popUpWindow.initFrame(image: "gambarQ1.png", fact: questions!.questionFact)
             self.state = true
+            self.pointsGained += questions!.reward
         default:
             handleShowPopUp(popUpview: popUpWindowForWrong)
             self.state = false
@@ -279,6 +281,11 @@ class ViewController: UIViewController {
             popUpview.transform = CGAffineTransform.identity
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? EndGameVC{
+            destination.points = "\(self.pointsGained)"
+        }
+    }
 }
 
 extension ViewController: PopUpDelegate{
@@ -305,7 +312,7 @@ extension ViewController: PopUpDelegate{
             self.popUpWindow.removeFromSuperview()
             self.visualEffectView.alpha = 0
         default:
-            self.navigationController?.popViewController(animated: true)
+            performSegue(withIdentifier: "toEndGame", sender: self)
             self.popUpWindowForWrong.removeFromSuperview()
             self.visualEffectView.alpha = 0
         }
