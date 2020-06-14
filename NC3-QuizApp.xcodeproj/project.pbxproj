@@ -26,6 +26,9 @@
 		4BC570BE248D456100B8E873 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BC570BC248D456100B8E873 /* LaunchScreen.storyboard */; };
 		4BC570C6248D469A00B8E873 /* LandingVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC570C5248D469A00B8E873 /* LandingVCViewController.swift */; };
 		4BC570CA248D4D5400B8E873 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC570C9248D4D5400B8E873 /* Questions.swift */; };
+		E643ACC224968D340090987D /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E643ACC124968D340090987D /* Onboarding.storyboard */; };
+		E643ACC4249696540090987D /* HowToPlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E643ACC3249696540090987D /* HowToPlay.storyboard */; };
+		E643ACC6249696950090987D /* HowToPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643ACC5249696950090987D /* HowToPlayVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		4BC570BF248D456100B8E873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC570C5248D469A00B8E873 /* LandingVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVCViewController.swift; sourceTree = "<group>"; };
 		4BC570C9248D4D5400B8E873 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		E643ACC124968D340090987D /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		E643ACC3249696540090987D /* HowToPlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HowToPlay.storyboard; sourceTree = "<group>"; };
+		E643ACC5249696950090987D /* HowToPlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 				4BC570B3248D456000B8E873 /* SceneDelegate.swift */,
 				4BC570B5248D456000B8E873 /* ViewController.swift */,
 				4BC570B7248D456000B8E873 /* Main.storyboard */,
+				E643ACC124968D340090987D /* Onboarding.storyboard */,
+				E643ACC3249696540090987D /* HowToPlay.storyboard */,
+				E643ACC5249696950090987D /* HowToPlayVC.swift */,
 				4B0914D0248E888C00378B59 /* LeaderBoardVC.swift */,
 				4BC570C9248D4D5400B8E873 /* Questions.swift */,
 				4BC570C5248D469A00B8E873 /* LandingVCViewController.swift */,
@@ -173,9 +182,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B3EF5DA2496367600D95D61 /* stage_4.mp3 in Resources */,
+				E643ACC224968D340090987D /* Onboarding.storyboard in Resources */,
 				4B3EF5DC2496367600D95D61 /* stage_5.mp3 in Resources */,
 				4B3EF5DB2496367600D95D61 /* Home Screen Backsound.mp3 in Resources */,
 				4B3EF5D92496367600D95D61 /* stage_2.mp3 in Resources */,
+				E643ACC4249696540090987D /* HowToPlay.storyboard in Resources */,
 				4B3EF5D82496367600D95D61 /* stage_1.mp3 in Resources */,
 				4B3EF5DD2496367600D95D61 /* stage_3.mp3 in Resources */,
 				4BC570BE248D456100B8E873 /* LaunchScreen.storyboard in Resources */,
@@ -194,6 +205,7 @@
 				4B24B7D124926E1900C619DB /* PopUpWindow.swift in Sources */,
 				4B4AD18E2494A5780060DB70 /* EndGameVC.swift in Sources */,
 				4B4AD18C2494A4760060DB70 /* onBoardingVC.swift in Sources */,
+				E643ACC6249696950090987D /* HowToPlayVC.swift in Sources */,
 				4B0914D1248E888C00378B59 /* LeaderBoardVC.swift in Sources */,
 				4BC570B6248D456000B8E873 /* ViewController.swift in Sources */,
 				4B3EF5CE249633E000D95D61 /* PlaySound.swift in Sources */,

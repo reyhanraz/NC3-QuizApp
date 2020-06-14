@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--How To PlayVC-->
+        <scene sceneID="zAt-ky-4F9">
+            <objects>
+                <viewController id="v4V-YE-4R6" customClass="HowToPlayVC" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LF8-Ju-mR3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onboarding_1" translatesAutoresizingMaskIntoConstraints="NO" id="2E7-ST-pAd">
+                                <rect key="frame" x="-4" y="-4" width="422" height="905"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqm-ce-sbp">
+                                <rect key="frame" x="40" y="745" width="335" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="next_button_onboarding"/>
+                                <connections>
+                                    <segue destination="W00-ao-S3Y" kind="show" id="JPl-3w-pfn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ink-ES-8YJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PWD-lE-7km"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YzQ-fQ-KgP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2702.898550724638" y="57.589285714285708"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MIJ-Yl-Wpz">
+            <objects>
+                <viewController id="W00-ao-S3Y" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cJa-fv-bOr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onboarding_2" translatesAutoresizingMaskIntoConstraints="NO" id="ecu-56-eG4">
+                                <rect key="frame" x="-4" y="-5" width="422" height="905"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbn-ei-5kq">
+                                <rect key="frame" x="40" y="745" width="335" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="next_button_onboarding"/>
+                                <connections>
+                                    <segue destination="N1L-R5-Qut" kind="show" id="AgI-Mz-lBQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="nU7-vZ-B4s"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SZG-0C-9UW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UX0-7Q-fHH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3440.579710144928" y="57.589285714285708"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vXg-23-KEx">
+            <objects>
+                <viewController id="N1L-R5-Qut" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qZ2-HZ-Vqb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onboarding_3" translatesAutoresizingMaskIntoConstraints="NO" id="NrO-VA-UOZ">
+                                <rect key="frame" x="-4" y="-4" width="422" height="905"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufL-FE-eue">
+                                <rect key="frame" x="40" y="745" width="335" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="start_button_onboarding"/>
+                                <connections>
+                                    <segue destination="HCm-u8-9wB" kind="show" id="MGz-ey-0X3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fXW-23-dfu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rq2-C6-BJP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pL4-uj-nMo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4178.2608695652179" y="57.589285714285708"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="QCd-N1-G4G">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="HCm-u8-9wB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9ua-mR-G3L"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPi-1e-aul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4764" y="66"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cZj-ic-4BU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o3i-t0-wGG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VFB-Sw-wzX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="v4V-YE-4R6" kind="relationship" relationship="rootViewController" id="uNf-pc-6wH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8O-rc-OkI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792.753623188406" y="57.589285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="next_button_onboarding" width="335" height="44"/>
+        <image name="onboarding_1" width="376" height="813"/>
+        <image name="onboarding_2" width="376" height="813"/>
+        <image name="onboarding_3" width="376" height="813"/>
+        <image name="start_button_onboarding" width="335" height="44"/>
+    </resources>
+</document>
