@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		4B0914D1248E888C00378B59 /* LeaderBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0914D0248E888C00378B59 /* LeaderBoardVC.swift */; };
 		4B24B7D124926E1900C619DB /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B24B7D024926E1900C619DB /* PopUpWindow.swift */; };
+		4B3EF5CE249633E000D95D61 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3EF5CD249633E000D95D61 /* PlaySound.swift */; };
+		4B3EF5D82496367600D95D61 /* stage_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B3EF5D22496367600D95D61 /* stage_1.mp3 */; };
+		4B3EF5D92496367600D95D61 /* stage_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B3EF5D32496367600D95D61 /* stage_2.mp3 */; };
+		4B3EF5DA2496367600D95D61 /* stage_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B3EF5D42496367600D95D61 /* stage_4.mp3 */; };
+		4B3EF5DB2496367600D95D61 /* Home Screen Backsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B3EF5D52496367600D95D61 /* Home Screen Backsound.mp3 */; };
+		4B3EF5DC2496367600D95D61 /* stage_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B3EF5D62496367600D95D61 /* stage_5.mp3 */; };
+		4B3EF5DD2496367600D95D61 /* stage_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B3EF5D72496367600D95D61 /* stage_3.mp3 */; };
 		4B4AD18C2494A4760060DB70 /* onBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4AD18B2494A4760060DB70 /* onBoardingVC.swift */; };
 		4B4AD18E2494A5780060DB70 /* EndGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4AD18D2494A5780060DB70 /* EndGameVC.swift */; };
 		4BB39C402490AB88003FB149 /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BB39C3F2490AB88003FB149 /* bensound-ukulele.mp3 */; };
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		4B0914D0248E888C00378B59 /* LeaderBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardVC.swift; sourceTree = "<group>"; };
 		4B24B7D024926E1900C619DB /* PopUpWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
+		4B3EF5CD249633E000D95D61 /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		4B3EF5D22496367600D95D61 /* stage_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage_1.mp3; sourceTree = "<group>"; };
+		4B3EF5D32496367600D95D61 /* stage_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage_2.mp3; sourceTree = "<group>"; };
+		4B3EF5D42496367600D95D61 /* stage_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage_4.mp3; sourceTree = "<group>"; };
+		4B3EF5D52496367600D95D61 /* Home Screen Backsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Home Screen Backsound.mp3"; sourceTree = "<group>"; };
+		4B3EF5D62496367600D95D61 /* stage_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage_5.mp3; sourceTree = "<group>"; };
+		4B3EF5D72496367600D95D61 /* stage_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage_3.mp3; sourceTree = "<group>"; };
 		4B4AD18B2494A4760060DB70 /* onBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingVC.swift; sourceTree = "<group>"; };
 		4B4AD18D2494A5780060DB70 /* EndGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameVC.swift; sourceTree = "<group>"; };
 		4BB39C3F2490AB88003FB149 /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-ukulele.mp3"; sourceTree = "<group>"; };
@@ -51,6 +65,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B3EF5D12496366600D95D61 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				4B3EF5D52496367600D95D61 /* Home Screen Backsound.mp3 */,
+				4B3EF5D22496367600D95D61 /* stage_1.mp3 */,
+				4B3EF5D32496367600D95D61 /* stage_2.mp3 */,
+				4B3EF5D72496367600D95D61 /* stage_3.mp3 */,
+				4B3EF5D42496367600D95D61 /* stage_4.mp3 */,
+				4B3EF5D62496367600D95D61 /* stage_5.mp3 */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
 		4BC570A5248D456000B8E873 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +97,8 @@
 		4BC570B0248D456000B8E873 /* NC3-QuizApp */ = {
 			isa = PBXGroup;
 			children = (
+				4B3EF5D12496366600D95D61 /* Songs */,
+				4B3EF5CD249633E000D95D61 /* PlaySound.swift */,
 				4B4AD18B2494A4760060DB70 /* onBoardingVC.swift */,
 				4BC570B1248D456000B8E873 /* AppDelegate.swift */,
 				4BC570B3248D456000B8E873 /* SceneDelegate.swift */,
@@ -146,7 +175,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3EF5DA2496367600D95D61 /* stage_4.mp3 in Resources */,
+				4B3EF5DC2496367600D95D61 /* stage_5.mp3 in Resources */,
 				4BB39C402490AB88003FB149 /* bensound-ukulele.mp3 in Resources */,
+				4B3EF5DB2496367600D95D61 /* Home Screen Backsound.mp3 in Resources */,
+				4B3EF5D92496367600D95D61 /* stage_2.mp3 in Resources */,
+				4B3EF5D82496367600D95D61 /* stage_1.mp3 in Resources */,
+				4B3EF5DD2496367600D95D61 /* stage_3.mp3 in Resources */,
 				4BC570BE248D456100B8E873 /* LaunchScreen.storyboard in Resources */,
 				4BC570BB248D456100B8E873 /* Assets.xcassets in Resources */,
 				4BC570B9248D456000B8E873 /* Main.storyboard in Resources */,
@@ -165,6 +200,7 @@
 				4B4AD18C2494A4760060DB70 /* onBoardingVC.swift in Sources */,
 				4B0914D1248E888C00378B59 /* LeaderBoardVC.swift in Sources */,
 				4BC570B6248D456000B8E873 /* ViewController.swift in Sources */,
+				4B3EF5CE249633E000D95D61 /* PlaySound.swift in Sources */,
 				4BC570C6248D469A00B8E873 /* LandingVCViewController.swift in Sources */,
 				4BC570CA248D4D5400B8E873 /* Questions.swift in Sources */,
 				4BC570B2248D456000B8E873 /* AppDelegate.swift in Sources */,

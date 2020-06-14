@@ -40,7 +40,11 @@ class ViewController: UIViewController {
     }()
     
     let ListOfQuestion: [question] = [
-        question(question: "Who is the singer of this song?", questionFact: "My Heart Will Go On in Titanic\nmovie is a demo track and\nrecorded in just one take.  ", correctAnswer: "Celine Dion", optionA: "Mariah Carey", optionB: "Celine Dion", optionC: "Whitney Houston", optionD: "Beyonce", reward: 10), question(question: "Which vocal group sings this song?", questionFact: "The music video reaches #1 on\nMTV Total Request Live for 25\nstraight days.", correctAnswer: "NSYNC", optionA: "NSYNC", optionB: "Westlife", optionC: "Backstreet Boys", optionD: "Boyz II Men", reward: 30), question(question: "What is the title of this song?", questionFact: "This song is a retelling of the\nFrench revolution and the death\nof King Louis XVI.", correctAnswer: "Viva La Vida", optionA: "Cyclone", optionB: "Damaged", optionC: "Yellow", optionD: "Viva La Vida", reward: 60), question(question: "How many personnel in a group sing the song 'Dancing Queen'?", questionFact: "ABBA were all certain that\nDancing Queen would be a hit.", correctAnswer: "4 personnel", optionA: "6 personnel", optionB: "5 personnel", optionC: "4 personnel", optionD: "3 personnel", reward: 100), question(question: "This is a song by Michael Jackson, in what year was this song released?", questionFact: "One Day in Your Life became\nnumber one in the UK for two\nweeks in June and July 1981.", correctAnswer: "1980s", optionA: "2010s", optionB: "2000s", optionC: "1990s", optionD: "1980s", reward: 150)]
+        question(question: "Who is the singer of this song?", questionSong: "stage_1", questionFact: "My Heart Will Go On in Titanic\nmovie is a demo track and\nrecorded in just one take.  ", factImage: "stage_1.png", correctAnswer: "Celine Dion", optionA: "Mariah Carey", optionB: "Celine Dion", optionC: "Whitney Houston", optionD: "Beyonce", reward: 10),
+        question(question: "Which vocal group sings this song?", questionSong: "stage_2", questionFact: "The music video reaches #1 on\nMTV Total Request Live for 25\nstraight days.", factImage: "stage_2.png", correctAnswer: "NSYNC", optionA: "NSYNC", optionB: "Westlife", optionC: "Backstreet Boys", optionD: "Boyz II Men", reward: 30),
+        question(question: "What is the title of this song?", questionSong: "stage_3", questionFact: "This song is a retelling of the\nFrench revolution and the death\nof King Louis XVI.", factImage: "stage_3.png", correctAnswer: "Viva La Vida", optionA: "Cyclone", optionB: "Damaged", optionC: "Yellow", optionD: "Viva La Vida", reward: 60),
+        question(question: "How many personnel in a group sing the song 'Dancing Queen'?", questionSong: "stage_4", questionFact: "ABBA were all certain that\nDancing Queen would be a hit.", factImage: "stage_4.png", correctAnswer: "4 personnel", optionA: "6 personnel", optionB: "5 personnel", optionC: "4 personnel", optionD: "3 personnel", reward: 100),
+        question(question: "This is a song by Michael Jackson, in what year was this song released?", questionSong: "stage_5", questionFact: "One Day in Your Life became\nnumber one in the UK for two\nweeks in June and July 1981.", factImage: "stage_5.png", correctAnswer: "1980s", optionA: "2010s", optionB: "2000s", optionC: "1990s", optionD: "1980s", reward: 150)]
 
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var boxImage: UIImageView!
@@ -64,8 +68,6 @@ class ViewController: UIViewController {
     
     var questions: question?
     
-    var player: AVAudioPlayer!
-
     //MARK: Init
     
     override func viewDidLoad() {
@@ -123,6 +125,7 @@ class ViewController: UIViewController {
         hint1Img.isEnabled = true
         hint2Img.isEnabled = true
         hint3Img.isEnabled = true
+        
     }
     
     func setupPage(y: CGFloat){
@@ -167,18 +170,6 @@ class ViewController: UIViewController {
             self.optionCbtn.center.y += 1000
             self.optionDbtn.center.y += 1000
         }, completion: nil)
-    }
-    
-    func playMusic(){
-        let soundURL = Bundle.main.url(forResource: "bensound-ukulele", withExtension: "mp3")
-        do{
-            try player = AVAudioPlayer(contentsOf: soundURL!)
-        }catch{
-            print(error)
-        }
-        player?.play()
-//        print(player?.duration)
-
     }
     
     func kuranginHint(){
@@ -239,11 +230,13 @@ class ViewController: UIViewController {
         
         switch sender.titleLabel?.text {
         case questions?.correctAnswer:
-            player?.stop()
+            
             handleShowPopUp(popUpview: popUpWindow)
-            popUpWindow.initFrame(image: "gambarQ1.png", fact: questions!.questionFact)
+            popUpWindow.initFrame(image: questions!.factImage, fact: questions!.questionFact)
             self.state = true
             self.pointsGained += questions!.reward
+            stopMusic()
+
         default:
             handleShowPopUp(popUpview: popUpWindowForWrong)
             self.state = false
@@ -259,8 +252,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func playBtnPressed(_ sender: Any) {
-        playMusic()
+        playSound(title: questions!.questionSong)
     }
+    
     @objc func handleShowPopUp(popUpview: UIView) {
         
         view.addSubview(popUpview)
