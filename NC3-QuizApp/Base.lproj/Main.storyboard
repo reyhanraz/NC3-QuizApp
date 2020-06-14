@@ -14,13 +14,14 @@
                     <view key="view" contentMode="scaleToFill" id="p9g-mc-eYM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KNt-pC-z9L"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7Aq-kW-LoP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zrj-xY-AeS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="-591"/>
+            <point key="canvasLocation" x="1726" y="-662"/>
         </scene>
         <!--LandingVC View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -58,6 +59,9 @@
                                 <rect key="frame" x="364" y="44" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="how_to_button"/>
+                                <connections>
+                                    <segue destination="K1t-cV-pxF" kind="show" id="znP-Ae-2Vp"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KK7-9N-xR7">
                                 <rect key="frame" x="58" y="49" width="59" height="21"/>
@@ -72,6 +76,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_note_label" translatesAutoresizingMaskIntoConstraints="NO" id="lVe-4R-NR6">
                                 <rect key="frame" x="66" y="114" width="282" height="300"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dT-a0-0qy">
+                                <rect key="frame" x="332" y="44" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="edit_profile_button"/>
+                                <connections>
+                                    <action selector="EditProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iuN-l7-kvL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -85,12 +97,112 @@
                     <navigationItem key="navigationItem" id="ep7-fj-QtB"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="EditProfilePopup" destination="w66-e5-KEZ" id="9ll-cg-IUF"/>
+                        <outlet property="avatar1Btn" destination="use-g5-ngC" id="Wm8-nk-ygp"/>
+                        <outlet property="avatar2Btn" destination="eez-LN-TaF" id="VDL-T6-cJJ"/>
+                        <outlet property="avatar3Btn" destination="7wG-iF-rMT" id="RHg-iW-U2E"/>
+                        <outlet property="avatar4Btn" destination="bOT-D7-Z63" id="Wsq-5N-Vsq"/>
+                        <outlet property="avatar5Btn" destination="SOE-Ds-2Lq" id="Qd2-GS-x9B"/>
+                        <outlet property="avatar6Btn" destination="xnR-RQ-ao7" id="nbB-3r-vgT"/>
                         <outlet property="musicNoteImg" destination="lVe-4R-NR6" id="DlJ-I6-S0m"/>
                         <outlet property="pointsLbl" destination="KK7-9N-xR7" id="5hc-b8-lIW"/>
                         <segue destination="6Fb-mU-Vf9" kind="show" identifier="toGamePlay" id="5qH-hM-dMJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="w66-e5-KEZ">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="306"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHn-YI-PSq">
+                            <rect key="frame" x="105" y="15" width="90" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpk-YM-U0b">
+                            <rect key="frame" x="23" y="44" width="71" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose Avatar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjt-Z2-z3S">
+                            <rect key="frame" x="23" y="134" width="100" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oaB-eh-lFu">
+                            <rect key="frame" x="21" y="70" width="259" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="use-g5-ngC">
+                            <rect key="frame" x="16" y="160" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="avatar_1"/>
+                            <connections>
+                                <action selector="pictureClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gf0-Wb-70W"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eez-LN-TaF">
+                            <rect key="frame" x="61" y="160" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="avatar_2"/>
+                            <connections>
+                                <action selector="pictureClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hpS-7i-W7D"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wG-iF-rMT">
+                            <rect key="frame" x="106" y="160" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="avatar_3"/>
+                            <connections>
+                                <action selector="pictureClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dBJ-ST-jwZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOT-D7-Z63">
+                            <rect key="frame" x="151" y="160" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="avatar_4"/>
+                            <connections>
+                                <action selector="pictureClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tuC-1F-VCh"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOE-Ds-2Lq">
+                            <rect key="frame" x="195" y="160" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="avatar_5"/>
+                            <connections>
+                                <action selector="pictureClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1oT-91-F3L"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnR-RQ-ao7">
+                            <rect key="frame" x="240" y="160" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="avatar_6"/>
+                            <connections>
+                                <action selector="pictureClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Snw-wy-vbM"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELB-lw-lYB">
+                            <rect key="frame" x="25" y="234" width="251" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="save_button"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znI-n3-4NA">
+                            <rect key="frame" x="256" y="3" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="noPopup"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.72941176470588232" green="0.84313725490196079" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                    <viewLayoutGuide key="safeArea" id="LKV-xC-EuF"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="908.69565217391312" y="123.88392857142857"/>
         </scene>
@@ -415,7 +527,14 @@ and earned 200 points!</string>
         </scene>
     </scenes>
     <resources>
+        <image name="avatar_1" width="52" height="51"/>
+        <image name="avatar_2" width="50" height="50"/>
+        <image name="avatar_3" width="50" height="51"/>
+        <image name="avatar_4" width="50" height="50"/>
+        <image name="avatar_5" width="51" height="50"/>
+        <image name="avatar_6" width="50" height="50"/>
         <image name="continue_button" width="335" height="44"/>
+        <image name="edit_profile_button" width="30" height="30"/>
         <image name="high_score_asset" width="276" height="253"/>
         <image name="hint_on" width="30" height="30"/>
         <image name="how_to_button" width="30" height="30"/>
@@ -425,11 +544,13 @@ and earned 200 points!</string>
         <image name="music_player_box" width="255" height="230"/>
         <image name="music_player_label" width="107" height="91"/>
         <image name="new_bg" width="375" height="812"/>
+        <image name="noPopup" width="50" height="50"/>
         <image name="plain_bg_2" width="375" height="812"/>
         <image name="play_button" width="335" height="44"/>
         <image name="play_music_button" width="80" height="80"/>
         <image name="points_in_trophy" width="25" height="25"/>
         <image name="points_label" width="30" height="30"/>
+        <image name="save_button" width="251" height="36"/>
         <image name="trophy_label" width="145" height="166"/>
     </resources>
 </document>
