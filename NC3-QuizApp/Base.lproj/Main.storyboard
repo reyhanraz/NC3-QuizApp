@@ -106,6 +106,7 @@
                         <outlet property="avatar6Btn" destination="xnR-RQ-ao7" id="nbB-3r-vgT"/>
                         <outlet property="musicNoteImg" destination="lVe-4R-NR6" id="DlJ-I6-S0m"/>
                         <outlet property="pointsLbl" destination="KK7-9N-xR7" id="5hc-b8-lIW"/>
+                        <outlet property="userNameTxtfld" destination="oaB-eh-lFu" id="e2h-9b-yHk"/>
                         <segue destination="6Fb-mU-Vf9" kind="show" identifier="toGamePlay" id="5qH-hM-dMJ"/>
                     </connections>
                 </viewController>
@@ -193,11 +194,17 @@
                             <rect key="frame" x="25" y="234" width="251" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="save_button"/>
+                            <connections>
+                                <action selector="saveBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BWQ-Ts-eyQ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znI-n3-4NA">
-                            <rect key="frame" x="256" y="3" width="44" height="44"/>
+                            <rect key="frame" x="256" y="0.0" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="noPopup"/>
+                            <connections>
+                                <action selector="dismissEditProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PDI-ic-8QH"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.72941176470588232" green="0.84313725490196079" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
@@ -527,11 +534,11 @@ and earned 200 points!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="avatar_1" width="52" height="51"/>
+        <image name="avatar_1" width="50" height="50"/>
         <image name="avatar_2" width="50" height="50"/>
-        <image name="avatar_3" width="50" height="51"/>
+        <image name="avatar_3" width="50" height="50"/>
         <image name="avatar_4" width="50" height="50"/>
-        <image name="avatar_5" width="51" height="50"/>
+        <image name="avatar_5" width="50" height="50"/>
         <image name="avatar_6" width="50" height="50"/>
         <image name="continue_button" width="335" height="44"/>
         <image name="edit_profile_button" width="30" height="30"/>

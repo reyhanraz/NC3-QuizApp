@@ -161,7 +161,7 @@ class PopUpWindowForWrong: UIView {
     let titleLbl: UILabel = {
         let label = UILabel()
         label.text = "Wrong!"
-        label.textColor = .black
+        label.textColor = .red
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 25)

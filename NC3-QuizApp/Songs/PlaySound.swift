@@ -22,6 +22,19 @@ var player: AVAudioPlayer?
         }
     }
 
+    func playSoundLoop(title: String){
+        if let soundURL = Bundle.main.url(forResource: title, withExtension: "mp3"){
+            do{
+                try player = AVAudioPlayer(contentsOf: soundURL)
+                player?.numberOfLoops = 1000
+                player?.play()
+
+            }catch{
+                print(error)
+            }
+        }
+    }
+
     func stopMusic(){
         player?.stop()
     }

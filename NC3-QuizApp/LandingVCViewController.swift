@@ -18,12 +18,16 @@ class LandingVCViewController: UIViewController {
     @IBOutlet weak var pointsLbl: UILabel!
     @IBOutlet weak var musicNoteImg: UIImageView!
     
+    @IBOutlet weak var userNameTxtfld: UITextField!
+    
     @IBOutlet weak var avatar1Btn: UIButton!
     @IBOutlet weak var avatar2Btn: UIButton!
     @IBOutlet weak var avatar3Btn: UIButton!
     @IBOutlet weak var avatar4Btn: UIButton!
     @IBOutlet weak var avatar5Btn: UIButton!
     @IBOutlet weak var avatar6Btn: UIButton!
+    
+    var profileImgChosen = ""
 
     
     let visualEffectView: UIVisualEffectView = {
@@ -37,8 +41,7 @@ class LandingVCViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        
-        pointsLbl.text = "\(data.integer(forKey: "Points"))"
+        playSoundLoop(title: "Home Screen Backsound")
     
         UIView.animate(withDuration: 1, delay: 1, options: [.beginFromCurrentState, .repeat], animations: {
             self.musicNoteImg.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2/5)
@@ -51,8 +54,13 @@ class LandingVCViewController: UIViewController {
         visualEffectView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         
         visualEffectView.alpha = 0
-
+        EditProfilePopup.alpha = 0
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        pointsLbl.text = "\(data.integer(forKey: "Points"))"
+
     }
     
     @IBAction func EditProfile(_ sender: Any) {
@@ -60,11 +68,19 @@ class LandingVCViewController: UIViewController {
         EditProfilePopup.layer.cornerRadius = 7
         EditProfilePopup.layer.borderColor = UIColor.white.cgColor
         EditProfilePopup.layer.borderWidth = 2
-        visualEffectView.alpha = 0.8
         self.view.addSubview(EditProfilePopup)
+        userNameTxtfld.text = data.string(forKey: "userName")
+
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.alpha = 0.9
+            self.EditProfilePopup.alpha = 1
+            self.EditProfilePopup.transform = CGAffineTransform.identity
+            self.EditProfilePopup.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }
     }
     
     @IBAction func toGamePlay(_ sender: UIButton) {
+        stopMusic()
         performSegue(withIdentifier: "toGamePlay", sender: nil)
     }
     
@@ -76,26 +92,45 @@ class LandingVCViewController: UIViewController {
         case avatar1Btn:
             resetAvatarBtn()
             sender.layer.borderWidth = 2
+            self.profileImgChosen = "avatar_1.png"
         case avatar2Btn:
             resetAvatarBtn()
             sender.layer.borderWidth = 2
+            self.profileImgChosen = "avatar_2.png"
         case avatar3Btn:
             resetAvatarBtn()
             sender.layer.borderWidth = 2
+            self.profileImgChosen = "avatar_3.png"
         case avatar4Btn:
             resetAvatarBtn()
             sender.layer.borderWidth = 2
+            self.profileImgChosen = "avatar_4.png"
         case avatar4Btn:
             resetAvatarBtn()
             sender.layer.borderWidth = 2
+            self.profileImgChosen = "avatar_5.png"
         default:
             resetAvatarBtn()
             sender.layer.borderWidth = 2
-
+            self.profileImgChosen = "avatar_6.png"
+        }
+    }
+    @IBAction func saveBtnClicked(_ sender: UIButton) {
+        if userNameTxtfld.text != ""{
+            data.set(userNameTxtfld.text, forKey: "userName")
+            data.set(self.profileImgChosen, forKey: "ProfileImage")
         }
         
-        
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.alpha = 0
+            self.EditProfilePopup.alpha = 0
+            self.EditProfilePopup.transform = CGAffineTransform.identity
+            self.EditProfilePopup.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }
+
+        //
     }
+
     
     func resetAvatarBtn(){
         avatar1Btn.layer.borderWidth = 0
@@ -112,7 +147,16 @@ class LandingVCViewController: UIViewController {
         }
     }
     
-
+    @IBAction func dismissEditProfile(_ sender: Any) {
+        //EditProfilePopup.removeFromSuperview()
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.alpha = 0
+            self.EditProfilePopup.alpha = 0
+            self.EditProfilePopup.transform = CGAffineTransform.identity
+            self.EditProfilePopup.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

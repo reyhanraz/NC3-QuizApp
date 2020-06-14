@@ -94,6 +94,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     func initUI(){
@@ -108,23 +109,22 @@ class ViewController: UIViewController {
             pointsLbl.text = "\(data.integer(forKey: "Points"))"
             
             buttonArray = [optionAbtn, optionBbtn, optionCbtn, optionDbtn]
+            
+            resetButtonOption()
+            
+            optionAbtn.isHidden = false
+            optionBbtn.isHidden = false
+            optionCbtn.isHidden = false
+            optionDbtn.isHidden = false
+
+            hint1Img.isEnabled = true
+            hint2Img.isEnabled = true
+            hint3Img.isEnabled = true
+        }else{
+            performSegue(withIdentifier: "toEndGame", sender: self)
         }
         
         
-        optionAbtn.backgroundColor = .white
-        optionBbtn.backgroundColor = .white
-        optionCbtn.backgroundColor = .white
-        optionDbtn.backgroundColor = .white
-        
-        optionAbtn.isHidden = false
-        optionBbtn.isHidden = false
-        optionCbtn.isHidden = false
-        optionDbtn.isHidden = false
-
-        
-        hint1Img.isEnabled = true
-        hint2Img.isEnabled = true
-        hint3Img.isEnabled = true
         
     }
     
@@ -175,27 +175,25 @@ class ViewController: UIViewController {
     func kuranginHint(){
         if hintLeft == 2{
             hint1Img.setImage(UIImage(named: "hint_off"), for: .normal)
+            hint1Img.isEnabled = false
         }else if hintLeft == 1{
             hint1Img.setImage(UIImage(named: "hint_off"), for: .normal)
             hint2Img.setImage(UIImage(named: "hint_off"), for: .normal)
+            hint1Img.isEnabled = false
+            hint2Img.isEnabled = false
         }else if hintLeft == 0{
             hint1Img.setImage(UIImage(named: "hint_off"), for: .normal)
             hint2Img.setImage(UIImage(named: "hint_off"), for: .normal)
             hint3Img.setImage(UIImage(named: "hint_off"), for: .normal)
+            hint1Img.isEnabled = false
+            hint2Img.isEnabled = false
+            hint3Img.isEnabled = false
         }
-        
         
         buttonArray.removeAll(where: {$0.titleLabel?.text == questions?.correctAnswer})
         print(buttonArray)
         buttonArray.randomElement()?.isHidden = true
         buttonArray.randomElement()?.isHidden = true
-        
-        hint1Img.isEnabled = false
-        hint2Img.isEnabled = false
-        hint3Img.isEnabled = false
-
-
-        
         
     }
 
@@ -206,25 +204,17 @@ class ViewController: UIViewController {
         
         switch sender{
         case optionAbtn:
+            resetButtonOption()
             optionAbtn.backgroundColor = color
-            optionBbtn.backgroundColor = .white
-            optionCbtn.backgroundColor = .white
-            optionDbtn.backgroundColor = .white
 
         case optionBbtn:
-            optionAbtn.backgroundColor = .white
+            resetButtonOption()
             optionBbtn.backgroundColor = color
-            optionCbtn.backgroundColor = .white
-            optionDbtn.backgroundColor = .white
         case optionCbtn:
-            optionAbtn.backgroundColor = .white
-            optionBbtn.backgroundColor = .white
+            resetButtonOption()
             optionCbtn.backgroundColor = color
-            optionDbtn.backgroundColor = .white
         default:
-            optionAbtn.backgroundColor = .white
-            optionBbtn.backgroundColor = .white
-            optionCbtn.backgroundColor = .white
+            resetButtonOption()
             optionDbtn.backgroundColor = color
         }
         
@@ -247,7 +237,6 @@ class ViewController: UIViewController {
     @IBAction func btnHintPressed(_ sender: UIButton) {
         hintLeft! -= 1
         kuranginHint()
-        
     }
     
     
@@ -266,13 +255,13 @@ class ViewController: UIViewController {
         popUpview.layer.borderWidth = 1
         popUpview.layer.borderColor = UIColor.white.cgColor
         popUpview.layer.cornerRadius = 7
-        popUpview.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         popUpview.alpha = 0
         
         UIView.animate(withDuration: 0.5) {
             self.visualEffectView.alpha = 0.8
             popUpview.alpha = 1
             popUpview.transform = CGAffineTransform.identity
+            popUpview.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -280,52 +269,57 @@ class ViewController: UIViewController {
             destination.points = "\(self.pointsGained)"
         }
     }
+    
+    func resetButtonOption(){
+        optionAbtn.backgroundColor = .white
+        optionBbtn.backgroundColor = .white
+        optionCbtn.backgroundColor = .white
+        optionDbtn.backgroundColor = .white
+    }
 }
 
 extension ViewController: PopUpDelegate{
     
     func handleDismissalYes() {
-        print("Yes")
         let point = data.integer(forKey: "Points")
-        data.set(point + questions!.reward, forKey: "Points")
-        self.index! += 1
-        animateHide()
-        setupPage(y: 2000)
-        animateShow()
-        initUI()
-        self.popUpWindow.removeFromSuperview()
-        self.visualEffectView.alpha = 0
+        switch self.state{
+        case true:
+            data.set(point + questions!.reward, forKey: "Points")
+            self.index! += 1
+            animateHide()
+            setupPage(y: 2000)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.visualEffectView.alpha = 0
+                self.popUpWindow.alpha = 0
+                self.popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            }) { (_) in
+                self.popUpWindow.removeFromSuperview()
+                self.animateShow()
+                self.initUI()
+            }
 
+        default:
+            if point >= 100{
+                self.popUpWindowForWrong.removeFromSuperview()
+                data.set(point - 100, forKey: "Points")
+                initUI()
+            }
+        }
+        self.visualEffectView.alpha = 0
+            
     }
     
     func handleDismissalNo() {
-        print("No")
         
         switch self.state {
         case true:
             self.popUpWindow.removeFromSuperview()
             self.visualEffectView.alpha = 0
         default:
-            performSegue(withIdentifier: "toEndGame", sender: self)
             self.popUpWindowForWrong.removeFromSuperview()
             self.visualEffectView.alpha = 0
         }
-        
-        
-        
-        
-        //performSegue(withIdentifier: "toEndGame", sender: nil)
-
-        
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.visualEffectView.alpha = 0
-//            self.popUpWindow.alpha = 0
-//            self.popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-//        }) { (_) in
-//            self.popUpWindow.removeFromSuperview()
-//            print("Did remove pop up window..")
-//        }
-
+        performSegue(withIdentifier: "toEndGame", sender: self)
     }
     
 }
