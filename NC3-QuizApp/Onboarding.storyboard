@@ -10,7 +10,7 @@
         <!--On BoardingVC-->
         <scene sceneID="ORh-0V-YQ3">
             <objects>
-                <viewController id="iIz-jP-RRi" customClass="onBoardingVC" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnBoard" id="iIz-jP-RRi" customClass="onBoardingVC" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x8Q-Ei-4PH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,7 @@
             <objects>
                 <viewController id="lGW-J1-PmG" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zTe-iE-gVe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onboarding_1" translatesAutoresizingMaskIntoConstraints="NO" id="vE0-F5-YEm">
@@ -72,7 +72,7 @@
             <objects>
                 <viewController id="Rof-Qo-xzg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rB7-7a-oXg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onboarding_2" translatesAutoresizingMaskIntoConstraints="NO" id="nxZ-bi-Alh">
@@ -97,12 +97,12 @@
             </objects>
             <point key="canvasLocation" x="2531.8840579710145" y="57.589285714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--On BoardingVC-->
         <scene sceneID="SOh-AU-X2T">
             <objects>
-                <viewController id="1Zp-19-3bN" sceneMemberID="viewController">
+                <viewController id="1Zp-19-3bN" customClass="onBoardingVC" customModule="NC3_QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ldj-yw-ZzX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onboarding_3" translatesAutoresizingMaskIntoConstraints="NO" id="k1z-DR-67E">
@@ -114,7 +114,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="start_button_onboarding"/>
                                 <connections>
-                                    <segue destination="7Hq-eT-ztK" kind="show" id="sXa-jU-bKA"/>
+                                    <action selector="btnStartPressed:" destination="1Zp-19-3bN" eventType="touchUpInside" id="Quz-7O-5R2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -127,141 +127,12 @@
             </objects>
             <point key="canvasLocation" x="3268.115942028986" y="57.589285714285708"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="vor-CC-yKI">
-            <objects>
-                <viewController id="7Hq-eT-ztK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6vg-pc-WhG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sign_up_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1cK-tC-82m">
-                                <rect key="frame" x="-4" y="-4" width="422" height="905"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwE-C6-SCB">
-                                <rect key="frame" x="40" y="745" width="335" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="skip_button"/>
-                                <connections>
-                                    <segue destination="Crb-Ce-j85" kind="show" id="ecv-4m-rxi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0w2-kF-nKA">
-                                <rect key="frame" x="40" y="685" width="335" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="save_onboarding_button"/>
-                                <connections>
-                                    <segue destination="Crb-Ce-j85" kind="show" id="cAH-x4-HdP"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please create your game account to see your rank in leaderboard.  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ib-rc-xi7">
-                                <rect key="frame" x="20" y="230" width="222" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nio-cj-rxg">
-                                <rect key="frame" x="20" y="305" width="79" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose Avatar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J79-6e-Yed">
-                                <rect key="frame" x="20" y="390" width="112" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar_1" translatesAutoresizingMaskIntoConstraints="NO" id="ir4-Ed-0Op">
-                                <rect key="frame" x="20" y="419" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar_2" translatesAutoresizingMaskIntoConstraints="NO" id="Fkw-A8-wSq">
-                                <rect key="frame" x="78" y="419" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar_3" translatesAutoresizingMaskIntoConstraints="NO" id="AAb-l5-Pwd">
-                                <rect key="frame" x="136" y="419" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar_4" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-bt-dnT">
-                                <rect key="frame" x="192" y="419" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar_5" translatesAutoresizingMaskIntoConstraints="NO" id="x9F-G8-sZB">
-                                <rect key="frame" x="250" y="419" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar_6" translatesAutoresizingMaskIntoConstraints="NO" id="mnM-Bk-RYW">
-                                <rect key="frame" x="305" y="419" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fWW-Sy-ogE">
-                                <rect key="frame" x="20" y="334" width="355" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="epD-GT-HGW"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Izb-8e-HTh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NDz-Rb-rDU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4002.898550724638" y="57.589285714285708"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="8Xe-YQ-AOc">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="Crb-Ce-j85" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="mqR-J5-Vi2"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EWN-uZ-esP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4554" y="203"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="463-7v-WeT">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hup-fO-HMn" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bNn-jh-2kC">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="iIz-jP-RRi" kind="relationship" relationship="rootViewController" id="Y1L-mK-Tuh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Hp-TN-rEn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="144.92753623188406" y="57.589285714285708"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="cAH-x4-HdP"/>
-    </inferredMetricsTieBreakers>
     <resources>
-        <image name="avatar_1" width="50" height="50"/>
-        <image name="avatar_2" width="50" height="50"/>
-        <image name="avatar_3" width="50" height="50"/>
-        <image name="avatar_4" width="50" height="50"/>
-        <image name="avatar_5" width="50" height="50"/>
-        <image name="avatar_6" width="50" height="50"/>
         <image name="next_button_onboarding" width="335" height="44"/>
         <image name="onboarding_1" width="376" height="813"/>
         <image name="onboarding_2" width="376" height="813"/>
         <image name="onboarding_3" width="376" height="813"/>
-        <image name="save_onboarding_button" width="335" height="44"/>
-        <image name="sign_up_bg" width="375" height="812"/>
-        <image name="skip_button" width="335" height="44"/>
         <image name="start_button_onboarding" width="335" height="44"/>
         <image name="welcome_bg" width="375" height="812"/>
     </resources>

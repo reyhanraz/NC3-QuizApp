@@ -24,6 +24,7 @@ struct question {
 struct users {
     var userName: String
     var points: Int
+    var profilePic: String
 }
 
 

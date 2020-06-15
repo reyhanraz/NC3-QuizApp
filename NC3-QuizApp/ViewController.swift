@@ -241,7 +241,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func playBtnPressed(_ sender: Any) {
-        playSound(title: questions!.questionSong)
+        playSound(title: questions!.questionSong, ext: "mp3")
     }
     
     @objc func handleShowPopUp(popUpview: UIView) {
@@ -266,7 +266,7 @@ class ViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? EndGameVC{
-            destination.points = "\(self.pointsGained)"
+            destination.points = self.pointsGained
         }
     }
     

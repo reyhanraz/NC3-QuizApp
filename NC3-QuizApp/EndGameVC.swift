@@ -10,36 +10,49 @@ import UIKit
 
 class EndGameVC: UIViewController {
     
+    var dynamicAnimator: UIDynamicAnimator!
+    var gravityBehaviour: UIGravityBehavior!
+    var collisionBehaviour: UICollisionBehavior!
+    
+    @IBOutlet weak var titleMessageLbl: UILabel!
     @IBOutlet weak var trophy: UIImageView!
     @IBOutlet weak var messageLbl: UILabel!
-    var points = ""
+    var points = 0
     var arrayOfCoins: [UIImageView] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        trophy.removeFromSuperview()
         
-        messageLbl.text = "You did a really great job\nand earned \(points) points!"
-
-        var loop = 0
-        while loop < 10{
-            pointss()
-            loop += 1
+        if points > 0{
+            messageLbl.text = "You did a really great job\nand earned \(points) points!"
+            var loop = 0
+            while loop < 50{
+                pointss()
+                loop += 1
+            }
+            animateCoins()
+            trophy.image = #imageLiteral(resourceName: "trophy_label")
+        }else{
+            titleMessageLbl.text = "Sorry!"
+            messageLbl.text = "You didn't get any points\nGood Luck next time"
+            trophy.image = #imageLiteral(resourceName: "trophy_Lose")
         }
-        animateCoins()
-        print(arrayOfCoins.count)
+        
+        view.addSubview(trophy)
     }
     
     func pointss(){
         let coins: UIImageView = {
             let image = UIImageView(frame: CGRect(x: 195, y: 355, width: 25, height: 25))
             image.contentMode = .scaleAspectFit
-            image.translatesAutoresizingMaskIntoConstraints = false
+            //image.translatesAutoresizingMaskIntoConstraints = false
             image.image = UIImage(named: "points_in_trophy")
             return image
             }()
         self.view.addSubview(coins)
         coins.alpha = 0
-        //coins.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -70).isActive = true
+        coins.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -70).isActive = true
         coins.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         arrayOfCoins.append(coins)
@@ -52,9 +65,10 @@ class EndGameVC: UIViewController {
     func animateCoins(){
         let safeArea = view.safeAreaLayoutGuide
         let maxX = safeArea.layoutFrame.size.width
-        let maxY = safeArea.layoutFrame.size.height
-        UIView.animate(withDuration: 1) {
-
+        let maxY = trophy.center.y
+        
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
             for items in self.arrayOfCoins{
                 let randomX = self.randomizer(batasAtas: UInt32(maxX))
                 let randomY = self.randomizer(batasAtas: UInt32(maxY))
@@ -62,6 +76,19 @@ class EndGameVC: UIViewController {
                 items.center.x = randomX
                 items.center.y = randomY
             }
+        }) { (_) in
+            playSound(title: "CoinsDropped", ext: "mp3")
+            self.dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+                
+                self.gravityBehaviour = UIGravityBehavior(items: self.arrayOfCoins)
+                
+                self.dynamicAnimator.addBehavior(self.gravityBehaviour)
+                
+                self.collisionBehaviour = UICollisionBehavior(items: self.arrayOfCoins)
+                self.dynamicAnimator.addBehavior(self.collisionBehaviour)
+        
+                self.collisionBehaviour.translatesReferenceBoundsIntoBoundary = true
+//            self.collisionBehaviour.collisionMode = .
         }
     }
     

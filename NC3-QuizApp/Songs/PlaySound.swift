@@ -10,8 +10,8 @@ import AVFoundation
 
 var player: AVAudioPlayer?
 
-    func playSound(title: String){
-        if let soundURL = Bundle.main.url(forResource: title, withExtension: "mp3"){
+func playSound(title: String, ext: String){
+        if let soundURL = Bundle.main.url(forResource: title, withExtension: ext){
             do{
                 try player = AVAudioPlayer(contentsOf: soundURL)
                 player?.play()
@@ -38,3 +38,11 @@ var player: AVAudioPlayer?
     func stopMusic(){
         player?.stop()
     }
+
+func soundMute(){
+    player?.setVolume(0.0, fadeDuration: 0.2)
+}
+
+func soundUnMute(){
+    player?.setVolume(1.0, fadeDuration: 0.2)
+}

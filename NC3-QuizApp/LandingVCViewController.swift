@@ -12,6 +12,7 @@ import UIKit
 let data = UserDefaults.standard
 
 class LandingVCViewController: UIViewController {
+    @IBOutlet weak var soundBtn: UIButton!
     
     @IBOutlet var EditProfilePopup: UIView!
     
@@ -28,6 +29,7 @@ class LandingVCViewController: UIViewController {
     @IBOutlet weak var avatar6Btn: UIButton!
     
     var profileImgChosen = ""
+    
 
     
     let visualEffectView: UIVisualEffectView = {
@@ -41,7 +43,6 @@ class LandingVCViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        playSoundLoop(title: "Home Screen Backsound")
     
         UIView.animate(withDuration: 1, delay: 1, options: [.beginFromCurrentState, .repeat], animations: {
             self.musicNoteImg.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2/5)
@@ -56,10 +57,20 @@ class LandingVCViewController: UIViewController {
         visualEffectView.alpha = 0
         EditProfilePopup.alpha = 0
         
+        soundBtn.setImage(UIImage(named: "mute_button"), for: .normal)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         pointsLbl.text = "\(data.integer(forKey: "Points"))"
+        playSoundLoop(title: "Home Screen Backsound")
+        
+        if !Core.shared.isNewUser(){
+            stopMusic()
+            let storyBoard = UIStoryboard(name: "Onboarding", bundle: nil)
+            let mainViewController = storyBoard.instantiateViewController(withIdentifier: "OnBoard")
+            self.navigationController?.pushViewController(mainViewController, animated: true)
+        }
 
     }
     
@@ -156,15 +167,31 @@ class LandingVCViewController: UIViewController {
             self.EditProfilePopup.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func soundBtnPressed(_ sender: UIButton) {
+        switch sender.currentImage {
+        case UIImage(named: "mute_button"):
+            soundBtn.setImage(UIImage(named: "unmute_button"), for: .normal)
+            soundMute()
+        default:
+            soundBtn.setImage(UIImage(named: "mute_button"), for: .normal)
+            soundUnMute()
+        }
+        
     }
-    */
+    
+}
 
+class Core{
+    static let shared = Core()
+    
+    func isNewUser()->Bool{
+        return data.bool(forKey: "firstUser")
+    }
+    
+    func setIsnotnewUser(){
+        data.set(true, forKey: "firstUser")
+    }
+    
+    
+    
 }
