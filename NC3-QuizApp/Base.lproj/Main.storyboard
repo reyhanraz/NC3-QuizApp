@@ -7,6 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--HowToPlay-->
+        <scene sceneID="mK2-Ns-Zu6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HowToPlay" id="Q1m-FB-aSL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="DoO-k8-MBE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zmK-D9-nxg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973" y="-306"/>
+        </scene>
         <!--On BoardingVC-->
         <scene sceneID="yby-yA-GYP">
             <objects>
@@ -60,7 +70,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="how_to_button"/>
                                 <connections>
-                                    <segue destination="K1t-cV-pxF" kind="show" id="znP-Ae-2Vp"/>
+                                    <segue destination="Q1m-FB-aSL" kind="show" id="wZH-dE-GJV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KK7-9N-xR7">

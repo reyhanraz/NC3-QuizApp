@@ -21,4 +21,9 @@ struct question {
     var reward: Int
 }
 
+struct users {
+    var userName: String
+    var points: Int
+}
+
 
